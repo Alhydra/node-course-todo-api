@@ -41,7 +41,6 @@ MongoClient.connect(url, (err, client)=>{
         
     // })
     
-    db.collection("TodoApp")
 
     client.close()
     

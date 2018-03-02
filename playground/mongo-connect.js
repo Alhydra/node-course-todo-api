@@ -11,18 +11,18 @@ MongoClient.connect(url, (err, client)=>{
 
     const db = client.db("TodoApp");
 
-    // db.collection("Todos").insertOne({
-    //     desc: "Spmething to do",
-    //     finished: false
-    // }, (err,res)=>{
-    //     if (err){
-    //         return console.log("Unable to insert todo",err);
-    //     }
+    db.collection("Todos").insertOne({
+        desc: "Spmething to do",
+        finished: false
+    }, (err,res)=>{
+        if (err){
+            return console.log("Unable to insert todo",err);
+        }
         
-    //     console.log(JSON.stringify(res.ops, undefined, 2));
+        console.log(JSON.stringify(res.ops, undefined, 2));
         
         
-    // })
+    })
     
     db.collection("Users").insertOne({
         name: "Youssef",

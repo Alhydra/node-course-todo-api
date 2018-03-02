@@ -86,13 +86,23 @@ app.patch("/todo/:id",(req,res)=>{
         res.send({todo})
     }, (e)=>{
         
+    })  
+})
+
+app.post("/users", (req,res)=>{
+    const body = _.pick(req.body, ["email","password"])
+
+    const newUser = new User(body)
+
+    newUser.save().then(()=>{
+        return newUser.generateAuthToken()
+
+    }).then((token)=>{
+        res.header("x-auth",token).send(newUser)
+    }).catch((e)=>{
+        res.status(400).send(e)
     })
 
-
-
-
-
-    
 })
 
 app.listen(port, ()=>{
